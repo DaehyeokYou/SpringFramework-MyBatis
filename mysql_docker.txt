@@ -1,0 +1,32 @@
+<Local>
+docker pull mysql
+docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password mysql
+docker ps -a > COPY <ContainerID> 
+docker exec -it <ContainerID> /bin/bash
+
+<MySQL Container Bash>
+mysql -u root -p
+Password 입력
+create database spring;
+use spring;
+create user 'spring'@'%' identified by 'spring';
+grant all privileges on *.* to 'spring'@'%';
+flush privileges;
+create table article (
+article_id int(11),
+author varchar(100),
+title varchar(500),
+content varchar(2000)
+);
+Exit
+
+<Local>
+docker restart <ContainerID> 
+docker exec -it <ContainerID> /bin/bash
+
+<MySQL Container Bash>
+mysql -u spring -p 
+show databases;
+use spring;
+show tables;
+describe article;
