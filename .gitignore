@@ -25,3 +25,11 @@ hs_err_pid*
 # Spring Framework
 /target
 /build
+/.settings
+/.classpath
+/.project
+*.epoch
+*.log
+*.iml
+/.idea
+.mvn/wrapper/maven-wrapper.jar
